@@ -1,0 +1,173 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║           HƯỚNG DẪN CHẠY HỆ THỐNG - CHO KHÁCH HÀNG           ║
+║              (Đã có SQL Server sẵn trên máy)                  ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+📋 YÊU CẦU:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SQL Server đã cài đặt và đang chạy
+✅ Node.js 18+ (tải tại: https://nodejs.org)
+
+
+⚡ CÁC BƯỚC THỰC HIỆN (5 PHÚT):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BƯỚC 1: TẠO DATABASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Mở SQL Server Management Studio (SSMS)
+2. Kết nối với SQL Server của bạn
+3. Chạy 2 file SQL theo thứ tự:
+
+   a) File → Open → File → Chọn "database_setup.sql"
+      → Nhấn F5 (Execute)
+      → Đợi ~10 giây
+      ✓ Thấy thông báo "✅ HOÀN TẤT CÀI ĐẶT DATABASE!"
+
+   b) File → Open → File → Chọn "database_full_export.sql"
+      → Nhấn F5 (Execute)
+      → Đợi ~30 giây (file lớn)
+      ✓ Thấy thông báo "✅ Import hoàn tất!"
+
+✅ XONG! Database đã sẵn sàng với đầy đủ dữ liệu.
+
+
+BƯỚC 2: CẤU HÌNH KẾT NỐI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Mở thư mục dự án
+2. Vào thư mục "server"
+3. Tìm file ".env.example"
+4. Copy và đổi tên thành ".env"
+5. Mở file ".env" và sửa dòng DATABASE_URL:
+
+   Nếu dùng Windows Authentication (Khuyến nghị):
+   ┌─────────────────────────────────────────────────────────┐
+   │ DATABASE_URL="sqlserver://localhost\SQLEXPRESS;         │
+   │ database=school_mgr;integratedSecurity=true;            │
+   │ trustServerCertificate=true;encrypt=true"               │
+   └─────────────────────────────────────────────────────────┘
+
+   Nếu dùng SQL Authentication:
+   ┌─────────────────────────────────────────────────────────┐
+   │ DATABASE_URL="sqlserver://localhost\SQLEXPRESS;         │
+   │ database=school_mgr;user=sa;password=YourPassword;      │
+   │ trustServerCertificate=true;encrypt=true"               │
+   └─────────────────────────────────────────────────────────┘
+
+   ⚠️ Lưu ý: 
+   - Thay "localhost\SQLEXPRESS" bằng tên SQL Server của bạn
+   - Thay "YourPassword" bằng mật khẩu thật
+
+6. Lưu file
+
+
+BƯỚC 3: CÀI ĐẶT VÀ CHẠY (TỰ ĐỘNG)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Cách 1: Dùng script tự động (Dễ nhất)
+   1. Double-click file "setup.bat"
+   2. Đợi cài đặt xong (~2-3 phút)
+   3. Double-click file "start_server.bat"
+   4. Double-click file "start_client.bat"
+   5. Mở trình duyệt: http://localhost:5173
+
+Cách 2: Chạy thủ công
+   1. Mở Command Prompt (cmd)
+   2. Gõ lệnh:
+      
+      cd server
+      npm install
+      npm run dev
+
+   3. Mở Command Prompt thứ 2
+   4. Gõ lệnh:
+      
+      cd client
+      npm install
+      npm run dev
+
+   5. Mở trình duyệt: http://localhost:5173
+
+
+BƯỚC 4: ĐĂNG NHẬP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Truy cập: http://localhost:5173
+
+Tài khoản 1:
+   Email: admin@school.com
+   Password: admin123
+
+Tài khoản 2:
+   Email: admin2@school.com
+   Password: Admin@123
+
+⚠️ Nhớ đổi mật khẩu sau khi đăng nhập!
+
+
+✅ HOÀN TẤT!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hệ thống đã sẵn sàng với:
+   ✓ 120 học sinh
+   ✓ 12 lớp học (6A1, 6A2, ..., 9A3)
+   ✓ 13 môn học
+   ✓ 14,430 điểm số
+   ✓ Dữ liệu điểm danh và hạnh kiểm
+
+
+🔧 XỬ LÝ LỖI THƯỜNG GẶP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ Lỗi: "Cannot connect to SQL Server"
+   → Kiểm tra SQL Server đang chạy:
+     1. Nhấn Win + R
+     2. Gõ: services.msc
+     3. Tìm "SQL Server (SQLEXPRESS)"
+     4. Nhấn "Start" nếu chưa chạy
+
+❌ Lỗi: "Port 3001 already in use"
+   → Port đã bị chiếm:
+     1. Mở cmd
+     2. Gõ: netstat -ano | findstr :3001
+     3. Gõ: taskkill /PID <số_PID> /F
+
+❌ Lỗi: "Login failed for user"
+   → Sai connection string:
+     1. Kiểm tra lại file .env
+     2. Đảm bảo tên server và password đúng
+     3. Thử dùng Windows Authentication
+
+❌ Lỗi: "npm not found"
+   → Chưa cài Node.js:
+     1. Tải Node.js: https://nodejs.org
+     2. Cài đặt
+     3. Khởi động lại cmd
+
+
+📞 HỖ TRỢ:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nếu gặp vấn đề, liên hệ:
+   📧 Email: support@example.com
+   📱 Phone: 0123-456-789
+
+
+⚠️ LƯU Ý:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• SQL Server phải luôn chạy khi sử dụng hệ thống
+• Backup database định kỳ (Right-click DB → Tasks → Backup)
+• Đổi mật khẩu admin ngay sau khi đăng nhập
+• Không chia sẻ thông tin đăng nhập
+
+
+═══════════════════════════════════════════════════════════════
+
+Chúc bạn sử dụng hệ thống hiệu quả! 🎉
+
+═══════════════════════════════════════════════════════════════

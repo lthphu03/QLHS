@@ -1,0 +1,49 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║                    CHECKLIST NHANH - 5 PHÚT                   ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+☐ 1. Cài Node.js (nếu chưa có)
+     → https://nodejs.org
+     → Chọn phiên bản LTS
+     → Cài đặt với các tùy chọn mặc định
+
+☐ 2. Kiểm tra SQL Server đang chạy
+     → Win + R → gõ "services.msc"
+     → Tìm "SQL Server"
+     → Đảm bảo Status = "Running"
+
+☐ 3. Tạo database
+     → Mở SSMS
+     → Chạy file: database_setup.sql
+     → Chạy file: database_full_export.sql
+
+☐ 4. Cấu hình kết nối
+     → Copy server/.env.example → server/.env
+     → Sửa DATABASE_URL trong file .env
+
+☐ 5. Cài đặt và chạy
+     → Double-click: setup.bat
+     → Double-click: start_server.bat
+     → Double-click: start_client.bat
+
+☐ 6. Truy cập hệ thống
+     → Mở trình duyệt
+     → Vào: http://localhost:5173
+     → Đăng nhập: admin@school.com / admin123
+
+☐ 7. Đổi mật khẩu admin
+     → Vào Profile → Đổi mật khẩu
+
+
+✅ XONG! Hệ thống đã sẵn sàng sử dụng.
+
+
+═══════════════════════════════════════════════════════════════
+
+Xem hướng dẫn chi tiết trong file:
+   → HUONG_DAN_CHAY_HE_THONG.txt
+
+═══════════════════════════════════════════════════════════════

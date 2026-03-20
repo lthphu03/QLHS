@@ -1,0 +1,103 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║        HỆ THỐNG QUẢN LÝ HỌC SINH - HƯỚNG DẪN CÀI ĐẶT        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+📋 CÁC FILE QUAN TRỌNG:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. QUICK_START.md          → Hướng dẫn nhanh (5 phút)
+2. HUONG_DAN_CAI_DAT.md    → Hướng dẫn chi tiết đầy đủ
+3. database_setup.sql      → File tạo database (chạy trong SSMS)
+
+
+⚡ CÀI ĐẶT NHANH (CHO NGƯỜI MỚI):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BƯỚC 1: Cài SQL Server Express
+   → Vào: https://www.microsoft.com/sql-server/sql-server-downloads
+   → Tải "SQL Server 2022 Express"
+   → Chạy file cài đặt → Chọn "Basic"
+   → Đợi cài xong (5-10 phút)
+
+BƯỚC 2: Cài SQL Server Management Studio (SSMS)
+   → Vào: https://aka.ms/ssmsfullsetup
+   → Tải và cài đặt SSMS
+   → Mở SSMS → Kết nối với "localhost\SQLEXPRESS"
+
+BƯỚC 3: Tạo Database
+   → Trong SSMS: File → Open → File
+   → Chọn file "database_setup.sql"
+   → Nhấn F5 hoặc nút "Execute"
+   → Đợi chạy xong (1-2 phút)
+
+BƯỚC 4: Cài Node.js
+   → Vào: https://nodejs.org
+   → Tải phiên bản LTS (khuyến nghị)
+   → Cài đặt với các tùy chọn mặc định
+
+BƯỚC 5: Cấu hình kết nối
+   → Mở file: server\.env
+   → Tìm dòng DATABASE_URL
+   → Sửa thành:
+     DATABASE_URL="sqlserver://localhost\SQLEXPRESS;database=school_mgr;integratedSecurity=true;trustServerCertificate=true"
+
+BƯỚC 6: Cài đặt ứng dụng
+   → Mở Command Prompt (cmd)
+   → Gõ lệnh:
+     
+     cd server
+     npm install
+     node prisma/seed_all.js
+     npm run dev
+
+   → Mở Command Prompt thứ 2
+   → Gõ lệnh:
+     
+     cd client
+     npm install
+     npm run dev
+
+BƯỚC 7: Truy cập hệ thống
+   → Mở trình duyệt Chrome/Edge
+   → Vào: http://localhost:5173
+   → Đăng nhập:
+     Email: admin@school.com
+     Password: admin123
+
+
+🎯 SAU KHI CÀI ĐẶT XONG:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Đổi mật khẩu admin ngay:
+  → Chạy: cd server
+  → Chạy: node change_admin_password.js
+
+✓ Backup database định kỳ:
+  → Trong SSMS: Right-click database → Tasks → Backup
+
+
+📞 HỖ TRỢ:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nếu gặp vấn đề, liên hệ:
+   Email: support@example.com
+   Phone: 0123-456-789
+
+
+⚠️  LƯU Ý QUAN TRỌNG:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• SQL Server phải luôn chạy khi sử dụng hệ thống
+• Backup database thường xuyên
+• Không chia sẻ mật khẩu admin
+• Đổi mật khẩu mặc định ngay sau khi cài đặt
+
+
+═══════════════════════════════════════════════════════════════
+
+Chúc bạn sử dụng hệ thống hiệu quả! 🎉
+
+═══════════════════════════════════════════════════════════════
